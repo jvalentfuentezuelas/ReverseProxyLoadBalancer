@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+
+  proxy:
+    image: nginx:alpine
+    container_name: proxy
+    volumes:
+      - ./nginx.conf/nginx.proxy.conf:/etc/nginx/conf.d/z-overrides.conf
+    ports:
+      - 80:80
+  site2:
+    image: php:7.4-apache
+    container_name: site2
+    volumes:
+      - ./public:/var/www/html
+      
+
+  site3:
+    image: php:7.4-apache
+    container_name: site3
+    volumes:
+      - ./public:/var/www/html
+      
+
+  site1-loadbalance1:
+    image: php:7.4-apache
+    container_name: site1-loadbalance1
+    volumes:
+      - ./public:/var/www/html
+      
+
+  site1-loadbalance2:
+    image: php:7.4-apache
+    container_name: site1-loadbalance2
+    volumes:
+      - ./public:/var/www/html
+      
+
+  site1-loadbalance3:
+    image: php:7.4-apache
+    container_name: site1-loadbalance3
+    volumes:
+      - ./public:/var/www/html
+      

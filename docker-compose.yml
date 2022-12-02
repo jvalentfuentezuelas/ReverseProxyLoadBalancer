@@ -10,36 +10,40 @@ services:
     ports:
       - 80:80
   site2:
-    image: php:7.4-apache
+    image: php:8.1-apache
     container_name: site2
     volumes:
       - ./public:/var/www/html
       
 
   site3:
-    image: php:7.4-apache
+    image: php:8.1-apache
     container_name: site3
     volumes:
       - ./public:/var/www/html
       
 
   site1-loadbalance1:
-    image: php:7.4-apache
+    image: php:8.1-apache
     container_name: site1-loadbalance1
     volumes:
       - ./public:/var/www/html
       
 
   site1-loadbalance2:
-    image: php:7.4-apache
+    image: php:8.1-apache
     container_name: site1-loadbalance2
     volumes:
       - ./public:/var/www/html
       
 
   site1-loadbalance3:
-    image: php:7.4-apache
+    image: php:8.1-apache
     container_name: site1-loadbalance3
     volumes:
       - ./public:/var/www/html
-      
+  api:
+    build: ./api/
+    container_name: api
+    volumes:
+      - ./api:/var/www/html
